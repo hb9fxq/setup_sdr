@@ -1,4 +1,4 @@
-# Gnuradio setup from source
+# GNU Radio setup from source
 
 ## SetupGrcOnUbuntu1804.sh
 
