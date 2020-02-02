@@ -39,6 +39,7 @@ Be sure to add "export PYTHONPATH=/usr/local/lib/python3/dist-packages/:$PYTHONP
 git clone https://github.com/krippendorf/setup_sdr.git
 cd setup_sdr
 sudo ./SetupGrcOnUbuntu1804.sh
+sudo rm -rf ~/.cache/grc_gnuradio/
 ```
 Now add ... 
 ```export PYTHONPATH=/usr/local/lib/python3/dist-packages/:$PYTHONPATH``` 
