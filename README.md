@@ -2,7 +2,7 @@
 
 ## SetupGrcOnUbuntu1804.sh
 
-Install GNU Radio 3.8 and various OOTs and SDR tools on Ubuntu 18.04 LTS with the following components from source.
+Install GNU Radio 3.8 and various OOTs and SDR tools from source on Ubuntu 18.04 LTS with the following components from source.
 
 ONLY TESTED ON UBUNTU 18.04. 
 
