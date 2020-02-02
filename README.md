@@ -48,6 +48,4 @@ or start apps like
 ``` 
 PYTHONPATH=/usr/local/lib/python3/dist-packages/:$PYTHONPATH gnuradio-companion
 PYTHONPATH=/usr/local/lib/python3/dist-packages/:$PYTHONPATH gqrx
-``` 
-
 ```
