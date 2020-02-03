@@ -265,6 +265,17 @@ make -j $(nproc)
 make install
 ldconfig
 
+cd /opt/sdr/src
+git clone https://github.com/pothosware/SoapyPlutoSDR
+cd SoapyPlutoSDR
+mkdir build
+cd build
+cmake ..
+make -j $(nproc) 
+make install
+ldconfig
+
+
 # clone and build gr-fosphor
 cd /opt/sdr/src
 git clone https://github.com/osmocom/gr-fosphor.git
