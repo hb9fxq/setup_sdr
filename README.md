@@ -1,4 +1,4 @@
-# Gnuradio setup from source
+# GNU Radio setup from source
 
 ## SetupGrcOnUbuntu1804.sh
 
@@ -39,4 +39,14 @@ Be sure to add "export PYTHONPATH=/usr/local/lib/python3/dist-packages/:$PYTHONP
 git clone https://github.com/krippendorf/setup_sdr.git
 cd setup_sdr
 sudo ./SetupGrcOnUbuntu1804.sh
+sudo rm -rf ~/.cache/grc_gnuradio/
+```
+Now add ... 
+```export PYTHONPATH=/usr/local/lib/python3/dist-packages/:$PYTHONPATH``` 
+...to your .bashrc or .zshrc file!
+
+or start apps like
+``` 
+PYTHONPATH=/usr/local/lib/python3/dist-packages/:$PYTHONPATH gnuradio-companion
+PYTHONPATH=/usr/local/lib/python3/dist-packages/:$PYTHONPATH gqrx
 ```

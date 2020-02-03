@@ -22,6 +22,7 @@ apt install -y autoconf automake yasm build-essential ccache cmake doxygen fort7
 
 # fetch latest available cmake via snap
 snap install cmake --classic
+export PATH=/snap/bin:$PATH
 
 # install python dependencies
 pip3 install --upgrade setuptools
