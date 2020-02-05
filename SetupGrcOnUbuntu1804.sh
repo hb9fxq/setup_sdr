@@ -18,7 +18,7 @@ update-alternatives --set python /usr/bin/python3.6
 
 # update and install dependencies
 apt-get update && apt-get upgrade -y
-apt install -y autoconf automake yasm build-essential ccache cmake doxygen fort77 g++ git gpsd gpsd-clients gtk2-engines-pixbuf libasound2-dev libboost-all-dev libcodec2-dev libcomedi-dev libcppunit-1.14-0 libcppunit-dev libcppunit-doc libfftw3-bin libfftw3-dev libfftw3-doc libfontconfig1-dev libgmp-dev libgmp3-dev libgps-dev libgps23 libgsl-dev libgsm1-dev liblog4cpp5-dev libncurses5 libncurses5-dbg libncurses5-dev liborc-0.4-0 liborc-0.4-dev libpulse-dev libqt5opengl5-dev libqwt-dev libqwt-qt5-dev libqwt6abi1 libqwtplot3d-qt5-dev libsdl1.2-dev libtool libudev-dev libusb-1.0-0 libusb-1.0-0-dev libusb-dev libxi-dev libxrender-dev libzmq3-dev libzmq5 ncurses-bin portaudio19-dev python-cheetah python-dev python-docutils python-gps python-gtk2 python-lxml python-mako python-numpy python-numpy-dbg python-numpy-doc python-opengl python-requests python-scipy python-setuptools python-six python-sphinx python-tk python-wxgtk3.0 python-zmq python3-click python3-click-plugins python3-gi-cairo python3-lxml python3-mako python3-numpy python3-pip python3-pyqt5 python3-scipy python3-sphinx python3-yaml python3-zmq r-base-dev snapd swig vim wget htop curl libusb-1.0-0-dev pkg-config libfftw3-dev libqt5svg5-dev qt5-default qt5-qmake libliquid-dev python3-numpy python3-psutil python3-zmq python3-pyqt5 g++ libpython3-dev python3-pip cython3 qt5-default libfftw3-dev cmake pkg-config pkg-config autoconf automake libtool libfftw3-dev libusb-1.0-0-dev libusb-dev qt5-default qtbase5-dev qtchooser libqt5multimedia5-plugins qtmultimedia5-dev libqt5websockets5-dev qttools5-dev qttools5-dev-tools libqt5opengl5-dev qtbase5-dev libboost-all-dev libasound2-dev pulseaudio libopencv-dev libxml2-dev bison flex ffmpeg libavcodec-dev libavformat-dev libopus-dev libboost-dev libboost-date-time-dev libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libboost-thread-dev libboost-regex-dev libboost-test-dev libconfig++-dev libgmp-dev liborc-0.4-0 liborc-0.4-dev liborc-0.4-dev-bin libjsoncpp-dev libpng++-dev libvorbis-dev libxml2 libxml2-dev bison flex libaio-dev libboost-all-dev libglfw3-dev libfreetype6-dev ocl-icd-opencl-dev python3-opengl libarmadillo-dev libarmadillo-dev
+apt install -y autoconf automake yasm build-essential ccache cmake doxygen fort77 g++ git gpsd gpsd-clients gtk2-engines-pixbuf libasound2-dev libboost-all-dev libcodec2-dev libcomedi-dev libcppunit-1.14-0 libcppunit-dev libcppunit-doc libfftw3-bin libfftw3-dev libfftw3-doc libfontconfig1-dev libgmp-dev libgmp3-dev libgps-dev libgps23 libgsl-dev libgsm1-dev liblog4cpp5-dev libncurses5 libncurses5-dbg libncurses5-dev liborc-0.4-0 liborc-0.4-dev libpulse-dev libqt5opengl5-dev libqwt-dev libqwt-qt5-dev libqwt6abi1 libqwtplot3d-qt5-dev libsdl1.2-dev libtool libudev-dev libusb-1.0-0 libusb-1.0-0-dev libusb-dev libxi-dev libxrender-dev libzmq3-dev libzmq5 ncurses-bin portaudio19-dev python-cheetah python-dev python-docutils python-gps python-gtk2 python-lxml python-mako python-numpy python-numpy-dbg python-numpy-doc python-opengl python-requests python-scipy python-setuptools python-six python-sphinx python-tk python-wxgtk3.0 python-zmq python3-click python3-click-plugins python3-gi-cairo python3-lxml python3-mako python3-numpy python3-pip python3-pyqt5 python3-scipy python3-sphinx python3-yaml python3-zmq r-base-dev snapd swig vim wget htop curl libusb-1.0-0-dev pkg-config libfftw3-dev libqt5svg5-dev qt5-default qt5-qmake libliquid-dev python3-numpy python3-psutil python3-zmq python3-pyqt5 g++ libpython3-dev python3-pip cython3 qt5-default libfftw3-dev cmake pkg-config pkg-config autoconf automake libtool libfftw3-dev libusb-1.0-0-dev libusb-dev qt5-default qtbase5-dev qtchooser libqt5multimedia5-plugins qtmultimedia5-dev libqt5websockets5-dev qttools5-dev qttools5-dev-tools libqt5opengl5-dev qtbase5-dev libboost-all-dev libasound2-dev pulseaudio libopencv-dev libxml2-dev bison flex ffmpeg libavcodec-dev libavformat-dev libopus-dev libboost-dev libboost-date-time-dev libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libboost-thread-dev libboost-regex-dev libboost-test-dev libconfig++-dev libgmp-dev liborc-0.4-0 liborc-0.4-dev liborc-0.4-dev-bin libjsoncpp-dev libpng++-dev libvorbis-dev libxml2 libxml2-dev bison flex libaio-dev libboost-all-dev libglfw3-dev libfreetype6-dev ocl-icd-opencl-dev python3-opengl libarmadillo-dev libarmadillo-dev libi2c-dev libi2c0 libsqlite3-dev libwxgtk3.0-dev gnuplot libfltk1.3-dev
 
 # fetch latest available cmake via snap
 snap install cmake --classic
@@ -343,3 +343,18 @@ cmake ..
 make -j $(nproc) 
 make install
 ldconfig
+
+
+# clone and build LimeSuite
+cd /opt/sdr/src
+git clone https://github.com/myriadrf/LimeSuite.git
+cd LimeSuite
+git checkout stable
+mkdir build
+cd build
+cmake ../
+make -j $(nproc) 
+make install
+ldconfig
+cd ../udev-rules
+./install.sh
