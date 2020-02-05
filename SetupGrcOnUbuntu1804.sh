@@ -358,3 +358,14 @@ make install
 ldconfig
 cd ../udev-rules
 ./install.sh
+
+# clone and install gr-airspy
+cd /opt/sdr/src
+git clone https://github.com/ast/gr-airspy.git
+cd gr-airspy
+mkdir build
+cd build
+cmake ../
+make -j $(nproc) 
+make install
+ldconfig
