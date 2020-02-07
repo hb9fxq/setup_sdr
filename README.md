@@ -35,6 +35,7 @@ Be sure to add "export PYTHONPATH=/usr/local/lib/python3/dist-packages/:$PYTHONP
 * gr-airspy
 * SoapyPlutoSDR
 * LimeSuite incl. Desktop tools
+* multimon-ng
 
 ### install
 
