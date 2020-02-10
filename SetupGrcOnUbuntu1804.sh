@@ -249,9 +249,39 @@ make -j $(nproc)
 make install
 ldconfig
 
+# SoapySDR Plugins
 cd /opt/sdr/src
 git clone https://github.com/pothosware/SoapyPlutoSDR
 cd SoapyPlutoSDR
+mkdir build
+cd build
+cmake ..
+make -j $(nproc) 
+make install
+ldconfig
+
+cd /opt/sdr/src
+git clone https://github.com/pothosware/SoapyHackRF.git
+cd SoapyHackRF
+mkdir build
+cd build
+cmake ..
+make -j $(nproc) 
+make install
+
+
+cd /opt/sdr/src
+git clone https://github.com/pothosware/SoapyRTLSDR.git
+cd SoapyRTLSDR
+mkdir build
+cd build
+cmake ..
+make -j $(nproc) 
+make install
+ldconfig
+
+git clone https://github.com/pothosware/SoapyAirspy.git
+cd SoapyAirspy
 mkdir build
 cd build
 cmake ..

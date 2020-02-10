@@ -34,6 +34,8 @@ Be sure to add "export PYTHONPATH=/usr/local/lib/python3/dist-packages/:$PYTHONP
 * gr-adsb
 * gr-airspy
 * SoapyPlutoSDR
+* SoapyHackRF
+* SoapyRtlSDR
 * LimeSuite incl. Desktop tools
 * multimon-ng
 * SigDigger
