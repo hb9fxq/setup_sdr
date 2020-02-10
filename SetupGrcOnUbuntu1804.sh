@@ -280,6 +280,7 @@ make -j $(nproc)
 make install
 ldconfig
 
+cd /opt/sdr/src
 git clone https://github.com/pothosware/SoapyAirspy.git
 cd SoapyAirspy
 mkdir build
@@ -288,6 +289,18 @@ cmake ..
 make -j $(nproc) 
 make install
 ldconfig
+
+cd /opt/sdr/src
+git clone https://github.com/pothosware/SoapyAirspyHF.git
+cd SoapyAirspyHF
+mkdir build
+cd build
+cmake ..
+make -j $(nproc) 
+make install
+ldconfig
+
+
 
 
 # clone and build gr-fosphor
