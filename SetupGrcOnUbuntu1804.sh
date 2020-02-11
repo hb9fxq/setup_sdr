@@ -8,8 +8,12 @@
 
 # source root
 mkdir -p /opt/sdr/src
+mkdir -p /opt/sdr/tools
 
-export PYTHONPATH=/usr/local/lib/python3/dist-packages/:$PYTHONPATH
+export PYTHONPATH=/opt/sdr/tools/lib/python3/dist-packages:/opt/sdr/tools/lib/python3.6/site-packages:$PYTHONPATH
+export LD_LIBRARY_PATH=/opt/sdr/tools/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=/opt/sdr/tools/lib/pkgconfig:$PKG_CONFIG_PATH
+export PATH=/opt/sdr/tools/bin:$PATH
 
 # set default python interpreter to python 3.6 
 update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
@@ -38,7 +42,7 @@ git checkout v3.15.0.0
 cd host
 mkdir build
 cd build
-cmake ../
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ../
 make -j $(nproc)
 make install
 ldconfig
@@ -49,7 +53,7 @@ git clone --recursive -b maint-3.8 --single-branch https://github.com/gnuradio/g
 cd gnuradio/
 mkdir build
 cd build
-cmake ../
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ../
 make -j $(nproc)
 make install
 ldconfig
@@ -60,7 +64,7 @@ git clone https://github.com/mossmann/hackrf.git
 cd hackrf
 mkdir host/build
 cd host/build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make -j $(nproc)
 make install
 ldconfig
@@ -71,7 +75,7 @@ git clone git://git.osmocom.org/rtl-sdr.git
 cd rtl-sdr/
 mkdir build
 cd build
-cmake ../ -DINSTALL_UDEV_RULES=ON
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ../ -DINSTALL_UDEV_RULES=ON
 make -j $(nproc)
 make install
 ldconfig
@@ -82,7 +86,7 @@ git clone https://github.com/airspy/airspyone_host.git
 cd airspyone_host
 mkdir build
 cd build
-cmake ../ -DINSTALL_UDEV_RULES=ON
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ../ -DINSTALL_UDEV_RULES=ON
 make -j $(nproc)
 make install
 ldconfig
@@ -92,7 +96,7 @@ git clone https://github.com/airspy/airspyhf.git
 cd airspyhf
 mkdir build
 cd build
-cmake ../ -DINSTALL_UDEV_RULES=ON
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ../ -DINSTALL_UDEV_RULES=ON
 make -j $(nproc)
 make install
 ldconfig
@@ -103,7 +107,7 @@ git clone https://github.com/pothosware/SoapySDR.git
 cd SoapySDR
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make -j $(nproc)
 make install
 ldconfig
@@ -116,7 +120,7 @@ cd gr-osmosdr/
 git checkout gr3.8
 mkdir build
 cd build/
-cmake ../
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ../
 make -j $(nproc)
 make install
 ldconfig
@@ -127,7 +131,7 @@ git clone https://github.com/csete/gqrx.git gqrx.git
 cd gqrx.git
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make -j $(nproc)
 make install
 ldconfig
@@ -138,14 +142,14 @@ git clone https://github.com/merbanan/rtl_433.git
 cd rtl_433/
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make -j $(nproc)
 make install
 
 # clone and build inspectrum
 cd /opt/sdr/src && git clone https://github.com/miek/inspectrum
 cd inspectrum
-mkdir build && cd build && cmake .. && make -j $(nproc) && make install
+mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools .. && make -j $(nproc) && make install
 
 # install URH
 pip3 install urh
@@ -157,20 +161,19 @@ cp uhd-usrp.rules /etc/udev/rules.d/
 udevadm control --reload-rules
 udevadm trigger
 
-uhd_images_downloader
+/opt/sdr/tools/lib/uhd/utils/uhd_images_downloader.py
 
 # clone and build dump1090
 cd /opt/sdr/src && git clone https://github.com/antirez/dump1090.git 
 cd dump1090
-make -j $(nproc)
-cp dump1090 /usr/local/bin/
-
+make
+cp dump1090 /opt/sdr/tools/bin/
 
 # clone and build gr-satellites
 cd /opt/sdr/src
 git clone https://github.com/daniestevez/libfec.git
 cd libfec
-./configure
+./configure --prefix=/opt/sdr/tools
 make -j $(nproc)
 make install
 ldconfig
@@ -180,7 +183,7 @@ git clone -b maint-3.8 --single-branch https://github.com/daniestevez/gr-satelli
 cd gr-satellites
 mkdir build
 cd build
-cmake ../
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ../
 make -j $(nproc)
 make install
 ldconfig
@@ -193,7 +196,7 @@ git clone https://gitlab.com/librespacefoundation/gr-soapy.git
 cd gr-soapy
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make -j $(nproc)
 make install
 ldconfig
@@ -202,20 +205,21 @@ cd /opt/sdr/src
 wget http://mpir.org/mpir-3.0.0.zip
 unzip mpir-3.0.0.zip
 cd mpir-3.0.0
-./configure
+./configure --prefix=/opt/sdr/tools
 make
 make install
 ldconfig
 
+# TODO: lib-fec issues
 # clone and build gr-satnogs
-cd /opt/sdr/src
-git clone https://gitlab.com/librespacefoundation/satnogs/gr-satnogs.git
-cd gr-satnogs
-mkdir build
-cd build
-cmake ..
-make -j $(nproc)
-make install
+#cd /opt/sdr/src
+#git clone https://gitlab.com/librespacefoundation/satnogs/gr-satnogs.git
+#cd gr-satnogs
+#cd build
+#cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
+#mkdir build
+#make -j $(nproc)
+#make install
 
 # clone and build gr-iio (PLUTO-SDR)
 cd /opt/sdr/src
@@ -223,7 +227,7 @@ git clone https://github.com/analogdevicesinc/libiio.git
 cd libiio
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make -j $(nproc) 
 make install
 ldconfig
@@ -233,7 +237,7 @@ git clone https://github.com/analogdevicesinc/libad9361-iio.git
 cd libad9361-iio
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make -j $(nproc)
 make install
 ldconfig
@@ -244,7 +248,7 @@ cd gr-iio
 git checkout upgrade-3.8
 mkdir build
 cd build
-cmake cmake .. 
+cmake cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools .. 
 make -j $(nproc) 
 make install
 ldconfig
@@ -255,7 +259,7 @@ git clone https://github.com/pothosware/SoapyPlutoSDR
 cd SoapyPlutoSDR
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make -j $(nproc) 
 make install
 ldconfig
@@ -265,17 +269,17 @@ git clone https://github.com/pothosware/SoapyHackRF.git
 cd SoapyHackRF
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make -j $(nproc) 
 make install
-
+ldconfig
 
 cd /opt/sdr/src
 git clone https://github.com/pothosware/SoapyRTLSDR.git
 cd SoapyRTLSDR
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make -j $(nproc) 
 make install
 ldconfig
@@ -285,7 +289,7 @@ git clone https://github.com/pothosware/SoapyAirspy.git
 cd SoapyAirspy
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make -j $(nproc) 
 make install
 ldconfig
@@ -295,7 +299,7 @@ git clone https://github.com/pothosware/SoapyAirspyHF.git
 cd SoapyAirspyHF
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make -j $(nproc) 
 make install
 ldconfig
@@ -309,7 +313,7 @@ git clone https://github.com/osmocom/gr-fosphor.git
 cd gr-fosphor
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make -j $(nproc) 
 make install
 ldconfig
@@ -320,7 +324,7 @@ git clone https://github.com/karel/gr-adapt.git
 cd gr-adapt
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make -j $(nproc) 
 make install
 ldconfig
@@ -331,7 +335,7 @@ git clone https://github.com/bastibl/gr-foo.git
 cd gr-foo
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make
 sudo make install
 sudo ldconfig
@@ -342,7 +346,7 @@ git clone https://github.com/bastibl/gr-ieee802-15-4.git
 cd gr-ieee802-15-4
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make -j $(nproc) 
 make install
 ldconfig
@@ -353,7 +357,7 @@ git clone https://github.com/bastibl/gr-ieee802-11.git
 cd gr-ieee802-11
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make -j $(nproc) 
 make install
 ldconfig
@@ -365,7 +369,7 @@ cd gr-adsb
 git checkout maint-3.8
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make -j $(nproc) 
 make install
 ldconfig
@@ -378,7 +382,7 @@ cd LimeSuite
 git checkout stable
 mkdir build
 cd build
-cmake ../
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ../
 make -j $(nproc) 
 make install
 ldconfig
@@ -386,15 +390,16 @@ cd ../udev-rules
 ./install.sh
 
 # clone and install gr-airspy
-cd /opt/sdr/src
-git clone https://github.com/ast/gr-airspy.git
-cd gr-airspy
-mkdir build
-cd build
-cmake ../
-make -j $(nproc) 
-make install
-ldconfig
+# TODO... fix
+#cd /opt/sdr/src
+#git clone https://github.com/ast/gr-airspy.git
+#cd gr-airspy
+#mkdir build
+#cd build
+#cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ../
+#make -j $(nproc) 
+#make install
+#ldconfig
 
 # clone and install multimon-ng
 cd /opt/sdr/src
@@ -402,19 +407,24 @@ git clone https://github.com/EliasOenal/multimon-ng.git
 cd multimon-ng
 mkdir build
 cd build
-cmake ../
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ../
 make -j $(nproc) 
 make install
 ldconfig
 
 
 # clone and install SigDigger
+
+# TODO: find a better way: 
+sudo ln -s /opt/sdr/tools/lib/libvolk.so /usr/lib/libvolk.so
+sudo ln -s /opt/sdr/tools/lib/libvolk.so.2.0 /usr/lib/libvolk.so.2.0
+
 cd /opt/sdr/src
 git clone https://github.com/BatchDrake/sigutils.git
 cd sigutils
 mkdir build
 cd build
-cmake ../
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ../
 make -j $(nproc) 
 make install
 ldconfig
@@ -424,7 +434,7 @@ git clone https://github.com/BatchDrake/suscan.git
 cd suscan
 mkdir build
 cd build
-cmake ../
+cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ../
 make -j $(nproc) 
 make install
 ldconfig
@@ -432,7 +442,7 @@ ldconfig
 cd /opt/sdr/src
 git clone https://github.com/BatchDrake/SuWidgets
 cd SuWidgets
-qmake SuWidgetsLib.pro
+qmake PREFIX=/opt/sdr/tools SuWidgetsLib.pro
 make
 make install
 ldconfig
@@ -440,7 +450,7 @@ ldconfig
 cd /opt/sdr/src
 git clone https://github.com/BatchDrake/SigDigger
 cd SigDigger
-qmake SigDigger.pro
+qmake PREFIX=/opt/sdr/tools SigDigger.pro
 make
 make install
 ldconfig

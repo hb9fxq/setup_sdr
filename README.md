@@ -2,13 +2,11 @@
 
 ## SetupGrcOnUbuntu1804.sh
 
-Install GNU Radio 3.8 and various OOTs and SDR tools from source on Ubuntu 18.04 LTS with the following components from source.
+Install GNU Radio 3.8, various OOTs and SDR tools from source on Ubuntu 18.04 LTS with the following components from source.
 
 ONLY TESTED ON UBUNTU 18.04. 
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-
-Be sure to add "export PYTHONPATH=/usr/local/lib/python3/dist-packages/:$PYTHONPATH" to your .bashrc or .zshrc
 
 * UHD  v3.15.0.0
 * GR maint-3.8
@@ -24,7 +22,7 @@ Be sure to add "export PYTHONPATH=/usr/local/lib/python3/dist-packages/:$PYTHONP
 * dump1090
 * gr-satellites
 * gr-soapy
-* gr-satnogs
+* TODO gr-satnogs
 * gr-iio (PLUTO-SDR)
 * gr-fosphor
 * gr-adapt
@@ -32,7 +30,7 @@ Be sure to add "export PYTHONPATH=/usr/local/lib/python3/dist-packages/:$PYTHONP
 * gr-ieee802-15-4
 * buildgr-ieee802-11
 * gr-adsb
-* gr-airspy
+* TODO gr-airspy
 * SoapyPlutoSDR
 * SoapyHackRF
 * SoapyRtlSDR
@@ -48,12 +46,18 @@ cd setup_sdr
 sudo ./SetupGrcOnUbuntu1804.sh
 sudo rm -rf ~/.cache/grc_gnuradio/
 ```
-Now add ... 
-```export PYTHONPATH=/usr/local/lib/python3/dist-packages/:$PYTHONPATH``` 
-...to your .bashrc or .zshrc file!
 
-or start apps like
+
+
+To start apps, add the following variables to your environment
 ``` 
-PYTHONPATH=/usr/local/lib/python3/dist-packages/:$PYTHONPATH gnuradio-companion
-PYTHONPATH=/usr/local/lib/python3/dist-packages/:$PYTHONPATH gqrx
+export PYTHONPATH=/opt/sdr/tools/lib/python3/dist-packages:/opt/sdr/tools/lib/python3.6/site-packages:$PYTHONPATH
+export LD_LIBRARY_PATH=/opt/sdr/tools/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=/opt/sdr/tools/lib/pkgconfig:$PKG_CONFIG_PATH
+export PATH=/opt/sdr/tools/bin:$PATH
+
+#Then start apps.... 
+gnuradio-compannion
+gqrx
+...etc
 ```
