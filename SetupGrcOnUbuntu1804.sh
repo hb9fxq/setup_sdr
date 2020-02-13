@@ -446,7 +446,7 @@ ldconfig
 cd /opt/sdr/src
 git clone https://github.com/BatchDrake/SuWidgets
 cd SuWidgets
-qmake SUWIDGETS_INSTALL_LIBS=/opt/sdr/tools SuWidgetsLib.pro
+qmake SUWIDGETS_PREFIX=/opt/sdr/tools SuWidgetsLib.pro
 make
 make install
 ldconfig
