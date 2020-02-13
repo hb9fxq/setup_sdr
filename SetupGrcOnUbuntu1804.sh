@@ -454,7 +454,7 @@ ldconfig
 cd /opt/sdr/src
 git clone https://github.com/BatchDrake/SigDigger
 cd SigDigger
-qmake SIGDIGGER_PREFIX=/opt/sdr/tools SigDigger.pro
+qmake SUWIDGETS_PREFIX=/opt/sdr/tools SIGDIGGER_PREFIX=/opt/sdr/tools SigDigger.pro
 make
 make install
 ldconfig
