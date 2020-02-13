@@ -26,8 +26,8 @@ apt install -y autoconf automake yasm build-essential ccache cmake doxygen fort7
 
 wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | apt-key add -
 
-sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
-sudo apt-get update
+apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
+apt-get update
 
 apt-get install -y cmake
 
