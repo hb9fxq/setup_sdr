@@ -446,7 +446,7 @@ ldconfig
 cd /opt/sdr/src
 git clone https://github.com/BatchDrake/SuWidgets
 cd SuWidgets
-qmake -set prefix /opt/sdr/tools SuWidgetsLib.pro
+qmake SUWIDGETS_INSTALL_LIBS=/opt/sdr/tools SuWidgetsLib.pro
 make
 make install
 ldconfig
@@ -454,7 +454,7 @@ ldconfig
 cd /opt/sdr/src
 git clone https://github.com/BatchDrake/SigDigger
 cd SigDigger
-qmake -set prefix /opt/sdr/tools SigDigger.pro
+qmake SIGDIGGER_PREFIX=/opt/sdr/tools SigDigger.pro
 make
 make install
 ldconfig
