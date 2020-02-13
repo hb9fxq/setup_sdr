@@ -420,8 +420,8 @@ ldconfig
 # clone and install SigDigger
 
 # TODO: find a better way: 
-sudo ln -s /opt/sdr/tools/lib/libvolk.so /usr/lib/libvolk.so
-sudo ln -s /opt/sdr/tools/lib/libvolk.so.2.0 /usr/lib/libvolk.so.2.0
+ln -s /opt/sdr/tools/lib/libvolk.so /usr/lib/libvolk.so
+ln -s /opt/sdr/tools/lib/libvolk.so.2.0 /usr/lib/libvolk.so.2.0
 
 cd /opt/sdr/src
 git clone https://github.com/BatchDrake/sigutils.git
