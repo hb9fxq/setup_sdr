@@ -341,8 +341,8 @@ mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make
-sudo make install
-sudo ldconfig
+make install
+ldconfig
 
 # clone and build gr-ieee802-15-4
 cd /opt/sdr/src
