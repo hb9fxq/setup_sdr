@@ -26,8 +26,8 @@ apt install -y autoconf automake yasm build-essential ccache cmake doxygen fort7
 
 wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | apt-key add -
 
-sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
-sudo apt-get update
+apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
+apt-get update
 
 apt-get install -y cmake
 
@@ -341,8 +341,8 @@ mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=/opt/sdr/tools ..
 make
-sudo make install
-sudo ldconfig
+make install
+ldconfig
 
 # clone and build gr-ieee802-15-4
 cd /opt/sdr/src
@@ -420,8 +420,8 @@ ldconfig
 # clone and install SigDigger
 
 # TODO: find a better way: 
-sudo ln -s /opt/sdr/tools/lib/libvolk.so /usr/lib/libvolk.so
-sudo ln -s /opt/sdr/tools/lib/libvolk.so.2.0 /usr/lib/libvolk.so.2.0
+ln -s /opt/sdr/tools/lib/libvolk.so /usr/lib/libvolk.so
+ln -s /opt/sdr/tools/lib/libvolk.so.2.0 /usr/lib/libvolk.so.2.0
 
 cd /opt/sdr/src
 git clone https://github.com/BatchDrake/sigutils.git
@@ -454,7 +454,7 @@ ldconfig
 cd /opt/sdr/src
 git clone https://github.com/BatchDrake/SigDigger
 cd SigDigger
-qmake SIGDIGGER_PREFIX=/opt/sdr/tools SigDigger.pro
+qmake SUWIDGETS_PREFIX=/opt/sdr/tools SIGDIGGER_PREFIX=/opt/sdr/tools SigDigger.pro
 make
 make install
 ldconfig
