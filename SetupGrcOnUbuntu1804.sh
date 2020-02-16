@@ -242,6 +242,7 @@ cd ../udev-rules
 mv /usr/local/include/gnuradio /usr/local/include/gnuradio_bak
 mkdir -p /usr/local/include/gnuradio
 cp $SDRDESTDIR/include/gnuradio/attributes.h /usr/local/include/gnuradio/attributes.h
+apt_install_yes "libjsoncpp-dev"
 clone_and_cd gr-satnogs https://gitlab.com/librespacefoundation/satnogs/gr-satnogs.git
 cmake_and_ldconfig
 rm -rf /usr/local/include/gnuradio
