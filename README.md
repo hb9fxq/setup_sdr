@@ -1,6 +1,6 @@
-# GNU Radio setup from source
+# Build essential SDR tools from source
 
-## SetupGrcOnUbuntu1804.sh
+## SetupGrcOnUbuntu1804.sh (GNU Radio 3.8 + friends)
 
 Install GNU Radio 3.8, various OOTs and SDR tools from source on Ubuntu 18.04 LTS with the following components from source.
 
@@ -38,7 +38,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 * multimon-ng
 * SigDigger
 
-### install
+### Install
 
 ```
 git clone https://github.com/krippendorf/setup_sdr.git
@@ -46,7 +46,7 @@ cd setup_sdr
 sudo ./SetupGrcOnUbuntu1804.sh
 ```
 
-To start apps, add the following variables to your environment
+To start, setup environment vars:
 ``` 
 source vars
 
@@ -54,4 +54,25 @@ source vars
 gnuradio-compannion
 gqrx
 ...etc
+```
+
+
+## SetupSdrAngelUbuntu1804.sh (SDR Angel GUI Application with drivers)
+
+Setup SDR Angel based on https://github.com/f4exb/sdrangel/wiki/Compile-from-source-in-Linux instructions.
+
+### Install
+
+```
+git clone https://github.com/krippendorf/setup_sdr.git
+cd setup_sdr
+sudo ./SetupGrcOnUbuntu1804.sh
+```
+
+To start, setup environment vars:
+``` 
+source vars_sdrangel
+
+#Then start app.... 
+sdrangel
 ```
