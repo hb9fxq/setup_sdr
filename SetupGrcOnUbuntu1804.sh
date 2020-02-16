@@ -121,8 +121,8 @@ cmake_and_ldconfig "-DINSTALL_UDEV_RULES=ON"
 clone_and_cd airspyone_host https://github.com/airspy/airspyone_host.git
 cmake_and_ldconfig "-DINSTALL_UDEV_RULES=ON"
 
-#clone_and_cd airspyhf https://github.com/airspy/airspyhf.git
-#cmake_and_ldconfig "-DINSTALL_UDEV_RULES=ON"
+clone_and_cd airspyhf https://github.com/airspy/airspyhf.git
+cmake_and_ldconfig "-DINSTALL_UDEV_RULES=ON"
 
 # clone and build soapySDR
 clone_and_cd SoapySDR https://github.com/pothosware/SoapySDR.git
