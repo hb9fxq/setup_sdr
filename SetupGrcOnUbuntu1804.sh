@@ -176,8 +176,6 @@ chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.cache/grc_gnuradio
 clone_and_cd gr-soapy https://gitlab.com/librespacefoundation/gr-soapy.git
 cmake_and_ldconfig
 
-# TODO: lib-fec issues https://gitlab.com/librespacefoundation/satnogs/gr-satnogs.git
-
 # clone and build gr-iio (PLUTO-SDR)
 apt_install_yes "libxml2 libxml2-dev"
 clone_and_cd libiio https://github.com/analogdevicesinc/libiio.git
@@ -238,6 +236,16 @@ cd ../udev-rules
 ./install.sh
 
 # TODO...https://github.com/ast/gr-airspy.git
+
+# clone and build gr-satnogs
+# TODO: fix gr-satnogs Cmake config... dirty workaround
+mv /usr/local/include/gnuradio /usr/local/include/gnuradio_bak
+mkdir -p /usr/local/include/gnuradio
+cp $SDRDESTDIR/include/gnuradio/attributes.h /usr/local/include/gnuradio/attributes.h
+clone_and_cd gr-satnogs https://gitlab.com/librespacefoundation/satnogs/gr-satnogs.git
+cmake_and_ldconfig
+rm -rf /usr/local/include/gnuradio
+mv /usr/local/include/gnuradio_bak /usr/local/include/gnuradio
 
 # clone and build multimon-ng
 clone_and_cd multimon-ng https://github.com/EliasOenal/multimon-ng.git
