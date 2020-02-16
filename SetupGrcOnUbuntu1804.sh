@@ -64,19 +64,15 @@ apt_install_yes(){
 }
 
 update_and_configure_system(){ 
-    update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
     update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
     update-alternatives --set python /usr/bin/python3.6
 
     apt-get update && apt-get upgrade -y
-
     apt_install_yes "pavucontrol sox apt-transport-https ca-certificates autoconf automake libtool libudev-dev pkg-config   build-essential python3-pip libpython3-dev python-dev doxygen vim wget htop curl g++ libconfig++-dev libpng++-dev"
 
     wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | apt-key add -
-
     apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
     apt-get update
-
     apt-get install -y cmake
 
     # install python dependencies
@@ -87,6 +83,8 @@ update_and_configure_system(){
 }
 
 update_and_configure_system
+
+#read -p "Press enter to continue" 
 
 # clone and build hackrf host
 apt install -y libusb-1.0-0 libusb-1.0-0-dev libusb-dev libfftw3-bin libfftw3-dev libfftw3-doc
@@ -198,8 +196,6 @@ cmake_and_ldconfig
 clone_and_cd SoapyAirspy https://github.com/pothosware/SoapyRTLSDR.git
 cmake_and_ldconfig
 
-read -p "Press enter to continue"
-
 clone_and_cd SoapyAirspy https://github.com/pothosware/SoapyAirspy.git
 cmake_and_ldconfig
 
@@ -269,5 +265,15 @@ make_and_ldconfig
 # urh // TODO, fix native device support
 apt_install_yes "cython3"
 pip3 install -I  urh 
+
+# CSDR
+clone_and_cd csdr https://github.com/ha7ilm/csdr.git
+cd .. 
+make PREFIX=$SDRDESTDIR
+make PREFIX=$SDRDESTDIR install
+
+# clone luaradio
+apt_install_yes "luajit"
+clone_and_cd luaradio https://github.com/vsergeev/luaradio.git
 
 chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.cache/grc_gnuradio
