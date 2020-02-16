@@ -72,7 +72,7 @@ Setup SDR Angel based on https://github.com/f4exb/sdrangel/wiki/Compile-from-sou
 ```
 git clone https://github.com/krippendorf/setup_sdr.git
 cd setup_sdr
-sudo ./SetupGrcOnUbuntu1804.sh
+sudo ./SetupSdrAngelUbuntu1804.sh
 ```
 
 To start, setup environment vars:
