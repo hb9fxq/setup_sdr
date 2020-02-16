@@ -42,6 +42,8 @@ ONLY TESTED ON UBUNTU 18.04.
 * LimeSuite incl. Desktop tools
 * multimon-ng
 * SigDigger
+* LuaRadio
+* CSDR
 
 ### Install
 
