@@ -50,7 +50,7 @@ git clone https://github.com/krippendorf/setup_sdr.git
 cd setup_sdr
 sudo ./SetupGrcOnUbuntu1804.sh
 ```
-Script will depending on your machine a pretty long time... time to get some coffe :-) Maybe donate me coffee to Frank, HB9FXQ via PayPal (wernerkrippendorf@gmail.com) to support the development and maintenance of this script.
+Script will take - depending on your machine - a pretty long time... time to get some coffee :-) Maybe donate a coffee to Frank, HB9FXQ via PayPal (wernerkrippendorf@gmail.com) to support the development and maintenance of this script.
 
 To start, setup environment vars:
 ``` 
