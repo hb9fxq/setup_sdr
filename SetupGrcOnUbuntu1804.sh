@@ -82,9 +82,8 @@ update_and_configure_system(){
     pip3 install requests
 }
 
-update_and_configure_system
-
-#read -p "Press enter to continue" 
+#update_and_configure_system
+read -p "Press enter to continue" 
 
 # clone and build hackrf host
 apt install -y libusb-1.0-0 libusb-1.0-0-dev libusb-dev libfftw3-bin libfftw3-dev libfftw3-doc
@@ -130,6 +129,10 @@ cmake_and_ldconfig
 
 # clone and build gr-osmosdr
 clone_and_cd gr-osmosdr https://github.com/osmocom/gr-osmosdr.git "gr3.8"
+cmake_and_ldconfig
+
+# clone and build experimental SoapySDRPlay (Requires manual setup of SDR Play 3.06 linux x86 API, Download SDRPlay from Website!!!)
+clone_and_cd experimental-soapysdrplay https://github.com/fventuri/SoapySDRPlay.git "API3+RSPduo"
 cmake_and_ldconfig
 
 # clone and build gqrx

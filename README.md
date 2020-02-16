@@ -1,12 +1,16 @@
 # Build essential SDR tools from source
 
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+
 ## SetupGrcOnUbuntu1804.sh (GNU Radio 3.8 + friends)
 
 Install GNU Radio 3.8, various OOTs and SDR tools from source on Ubuntu 18.04 LTS with the following components from source.
 
-ONLY TESTED ON UBUNTU 18.04. 
+To use SDR Play experimental SOAPY plugin, SDRplay API for Linux Version 3.06 has to be downloaded and installed before executing this script.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ONLY TESTED ON UBUNTU 18.04. 
 
 * UHD  v3.15.0.0
 * GR maint-3.8
@@ -34,6 +38,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 * SoapyPlutoSDR
 * SoapyHackRF
 * SoapyRtlSDR
+* SoapySDRplay for public Beta API 3.06
 * LimeSuite incl. Desktop tools
 * multimon-ng
 * SigDigger
@@ -45,6 +50,7 @@ git clone https://github.com/krippendorf/setup_sdr.git
 cd setup_sdr
 sudo ./SetupGrcOnUbuntu1804.sh
 ```
+Script will depending on your machine a pretty long time... time to get some coffe :-) Maybe donate me coffee to Frank, HB9FXQ via PayPal (wernerkrippendorf@gmail.com) to support the development and maintenance of this script.
 
 To start, setup environment vars:
 ``` 
