@@ -44,17 +44,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 git clone https://github.com/krippendorf/setup_sdr.git
 cd setup_sdr
 sudo ./SetupGrcOnUbuntu1804.sh
-sudo rm -rf ~/.cache/grc_gnuradio/
 ```
-
-
 
 To start apps, add the following variables to your environment
 ``` 
-export PYTHONPATH=/opt/sdr/tools/lib/python3/dist-packages:/opt/sdr/tools/lib/python3.6/site-packages:$PYTHONPATH
-export LD_LIBRARY_PATH=/opt/sdr/tools/lib:$LD_LIBRARY_PATH
-export PKG_CONFIG_PATH=/opt/sdr/tools/lib/pkgconfig:$PKG_CONFIG_PATH
-export PATH=/opt/sdr/tools/bin:$PATH
+source vars
 
 #Then start apps.... 
 gnuradio-compannion
