@@ -79,7 +79,6 @@ update_and_configure_system(){
 }
 
 update_and_configure_system
-
 #read -p "Press enter to continue" 
 
 # clone and build CM265cc
@@ -145,7 +144,15 @@ mkdir build
 cd build
 cmake_and_ldconfig
 
-# clone and build airspyhf
+# clone and build Soapy SDR
+clone_and_cd SoapySDR https://github.com/pothosware/SoapySDR.git "soapy-sdr-0.7.1"
+cmake_and_ldconfig
+
+# clone and build experimental SoapySDRPlay (Requires manual setup of SDR Play 3.06 linux x86 API, Download SDRPlay from Website!!!)
+clone_and_cd experimental-soapysdrplay https://github.com/fventuri/SoapySDRPlay.git "API3+RSPduo"
+cmake_and_ldconfig
+
+# clone and build sdrangel
 clone_and_cd sdrangel https://github.com/f4exb/sdrangel.git
 cmake_and_ldconfig "-Wno-dev -DDEBUG_OUTPUT=ON -DRX_SAMPLE_24BIT=ON -DMIRISDR_DIR=$SDRDESTDIR -DAIRSPY_DIR=$SDRDESTDIR -DAIRSPYHF_DIR=$SDRDESTDIR -DBLADERF_DIR=$SDRDESTDIR -DHACKRF_DIR=$SDRDESTDIR -DRTLSDR_DIR=$SDRDESTDIR -DLIMESUITE_DIR=$SDRDESTDIR -DIIO_DIR=$SDRDESTDIR -DPERSEUS_DIR=$SDRDESTDIR -DXTRX_DIR=$SDRDESTDIR -DSOAPYSDR_DIR=$SDRDESTDIR -DCM256CC_DIR=$SDRDESTDIR -DDSDCC_DIR=$SDRDESTDIR -DSERIALDV_DIR=$SDRDESTDIR -DMBE_DIR=$SDRDESTDIR -DCODEC2_DIR=$SDRDESTDIR"
 

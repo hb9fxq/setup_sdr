@@ -82,8 +82,8 @@ update_and_configure_system(){
     pip3 install requests
 }
 
-#update_and_configure_system
-read -p "Press enter to continue" 
+update_and_configure_system
+#read -p "Press enter to continue" 
 
 # clone and build hackrf host
 apt install -y libusb-1.0-0 libusb-1.0-0-dev libusb-dev libfftw3-bin libfftw3-dev libfftw3-doc
