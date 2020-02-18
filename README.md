@@ -26,7 +26,7 @@ ONLY TESTED ON UBUNTU 18.04.
 * dump1090
 * gr-satellites
 * gr-soapy
-* gr-satnogs (Working with hacky workaround... TODO report bug)
+* gr-satnogs
 * gr-iio (PLUTO-SDR)
 * gr-fosphor
 * gr-adapt

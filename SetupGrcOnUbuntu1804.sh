@@ -238,15 +238,9 @@ cd ../udev-rules
 # TODO...https://github.com/ast/gr-airspy.git
 
 # clone and build gr-satnogs
-# TODO: fix gr-satnogs Cmake config... dirty workaround
-mv /usr/local/include/gnuradio /usr/local/include/gnuradio_bak
-mkdir -p /usr/local/include/gnuradio
-cp $SDRDESTDIR/include/gnuradio/attributes.h /usr/local/include/gnuradio/attributes.h
 apt_install_yes "libjsoncpp-dev"
 clone_and_cd gr-satnogs https://gitlab.com/librespacefoundation/satnogs/gr-satnogs.git
 cmake_and_ldconfig
-rm -rf /usr/local/include/gnuradio
-mv /usr/local/include/gnuradio_bak /usr/local/include/gnuradio
 
 # clone and build multimon-ng
 clone_and_cd multimon-ng https://github.com/EliasOenal/multimon-ng.git
