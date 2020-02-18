@@ -238,7 +238,7 @@ cd ../udev-rules
 # TODO...https://github.com/ast/gr-airspy.git
 
 # clone and build gr-satnogs
-apt_install_yes "libjsoncpp-dev"
+apt_install_yes "libjsoncpp-dev libpng++-dev libvorbis-dev"
 clone_and_cd gr-satnogs https://gitlab.com/librespacefoundation/satnogs/gr-satnogs.git
 cmake_and_ldconfig
 
