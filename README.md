@@ -85,7 +85,7 @@ source vars_sdrangel
 sdrangel
 ```
 
-## Experimental -> Docker (WIP, not working yet)
+## Experimental -> Linux Hosts only Docker (WIP, not working yet)
 
 docker build -t sdrtools .
 
