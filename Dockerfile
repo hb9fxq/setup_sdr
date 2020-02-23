@@ -33,6 +33,7 @@ COPY ./vars /home/${UNAME}/vars
 
 copy ./entrypoint.sh /home/${UNAME}/entrypoint.sh
 RUN sudo /home/${UNAME}/SetupGrcOnUbuntu1804.sh
+RUN sudo rm -rf /home/sdrtools/.cache
 
-RUN chmod +x ./entrypoint.sh /home/${UNAME}/entrypoint.sh
+RUN sudo chmod +x /home/sdrtools/entrypoint.sh
 ENTRYPOINT ["/home/sdrtools/entrypoint.sh"]
