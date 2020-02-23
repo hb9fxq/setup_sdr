@@ -283,3 +283,5 @@ apt_install_yes "luajit"
 clone_and_cd luaradio https://github.com/vsergeev/luaradio.git
 
 chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.cache/grc_gnuradio
+
+exit 0

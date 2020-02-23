@@ -1,0 +1,4 @@
+export PYTHONPATH=/home/root/wrk/sdr_env_gr38/lib/python3/dist-packages:/home/root/wrk/sdr_env_gr38/lib/python3.6/site-packages:$PYTHONPATH
+export LD_LIBRARY_PATH=/home/root/wrk/sdr_env_gr38/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=/home/root/wrk/sdr_env_gr38/lib/pkgconfig:$PKG_CONFIG_PATH
+export PATH=/home/root/wrk/sdr_env_gr38/bin:$PATH
