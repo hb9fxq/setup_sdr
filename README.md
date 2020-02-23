@@ -84,3 +84,9 @@ source vars_sdrangel
 #Then start app.... 
 sdrangel
 ```
+
+## Experimental -> Docker (WIP, not working yet)
+
+docker build -t sdrtools .
+
+docker run -it --privileged -v /dev:/dev --rm -e PULSE_SERVER=unix:/run/user/1000/pulse/native -e DISPLAY=unix$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v /run/user/1000/pulse:/run/user/1000/pulse sdrtools

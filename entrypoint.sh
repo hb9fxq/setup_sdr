@@ -1,2 +1,3 @@
 #!/bin/bash
-source ~/sdrvars
+source /home/sdrtools/vars
+exec "$@"
