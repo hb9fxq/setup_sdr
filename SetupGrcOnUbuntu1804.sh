@@ -68,7 +68,7 @@ update_and_configure_system(){
     update-alternatives --set python /usr/bin/python3.6
 
     apt-get update && apt-get upgrade -y
-    apt_install_yes "pavucontrol sox apt-transport-https ca-certificates autoconf automake libtool libudev-dev pkg-config   build-essential python3-pip libpython3-dev python-dev doxygen vim wget htop curl g++ libconfig++-dev libpng++-dev"
+    apt_install_yes "pavucontrol sox apt-transport-https ca-certificates autoconf automake libtool libudev-dev pkg-config   build-essential python3-pip libpython3-dev python-dev doxygen vim wget htop curl g++ libconfig++-dev libpng++-dev python-dbg python3-dbg graphviz bison flex"
 
     wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | apt-key add -
     apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
