@@ -13,7 +13,7 @@ then
 fi
 
 echo "creating source and dest dir"
-SDRSOURCEDIR=/home/$SUDO_USER/wrk/src
+SDRSOURCEDIR=/home/$SUDO_USER/wrk/sdr_src_gr38
 SDRDESTDIR=/home/$SUDO_USER/wrk/sdr_env_gr38
 
 mkdir -p $SDRSOURCEDIR

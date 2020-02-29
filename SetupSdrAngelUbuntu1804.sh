@@ -11,12 +11,12 @@
 
 if [ ! "`whoami`" = "root" ]
 then
-    echo "Please run this script as root using sudo! (sudo ./SetupGrcOnUbuntu1804.sh)"
+    echo "Please run this script as root using sudo! (sudo ./SetupSdrAngelUbuntu1804.sh)"
     exit 1
 fi
 
 echo "creating source and dest dir"
-SDRSOURCEDIR=/home/$SUDO_USER/wrk/srcSdrAngel
+SDRSOURCEDIR=/home/$SUDO_USER/wrk/sdr_src_sdrangel
 SDRDESTDIR=/home/$SUDO_USER/wrk/sdr_env_sdrangel
 
 mkdir -p $SDRSOURCEDIR
