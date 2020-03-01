@@ -87,6 +87,30 @@ sdrangel
 
 ## Experimental -> Linux Hosts only Docker (WIP, not working yet)
 
-docker build -t sdrtools .
 
-docker run -it --privileged -v /dev:/dev --rm -e PULSE_SERVER=unix:/run/user/1000/pulse/native -e DISPLAY=unix$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v /run/user/1000/pulse:/run/user/1000/pulse sdrtools
+### Pull from Dockerhub
+
+```
+docker pull hb9fxq/sdr_tools
+```
+
+On Linux host with X11 / Pulseaudio:
+```
+docker run -it --privileged -v /dev:/dev --rm -e PULSE_SERVER=unix:/run/user/1000/pulse/native -e DISPLAY=unix$DIS -v /tmp/.X11-unix:/tmp/.X11-unix -v /run/user/1000/pulse:/run/user/1000/pulse hb9fxq/sdr_tools /bin/bash
+```
+
+Console only host:
+```
+docker run -it --privileged -v /dev:/dev --rm hb9fxq/sdr_tools /bin/bash
+```
+
+
+### Local build instruction
+
+```
+docker build -t sdrtoolslocal .
+```
+
+```
+docker run -it --privileged -v /dev:/dev --rm -e PULSE_SERVER=unix:/run/user/1000/pulse/native -e DISPLAY=unix$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v /run/user/1000/pulse:/run/user/1000/pulse sdrtoolslocal
+```
