@@ -96,7 +96,7 @@ docker pull hb9fxq/sdr_tools
 
 On Linux host with X11 / Pulseaudio:
 ```
-docker run -it --privileged -v /dev:/dev --rm -e PULSE_SERVER=unix:/run/user/1000/pulse/native -e DISPLAY=unix$DIS -v /tmp/.X11-unix:/tmp/.X11-unix -v /run/user/1000/pulse:/run/user/1000/pulse hb9fxq/sdr_tools /bin/bash
+docker run -it --privileged -v /dev:/dev --rm -e PULSE_SERVER=unix:/run/user/1000/pulse/native -e DISPLAY=unix$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v /run/user/1000/pulse:/run/user/1000/pulse hb9fxq/sdr_tools /bin/bash
 ```
 
 Console only host:
