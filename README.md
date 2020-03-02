@@ -95,6 +95,12 @@ docker pull hb9fxq/sdr_tools
 ```
 
 On Linux host with X11 / Pulseaudio:
+
+In order to run X11 apps, local user must be configured to accept connections
+```
+xhost +local:$(id -un)
+```
+
 ```
 docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb --rm -e PULSE_SERVER=unix:/run/user/1000/pulse/native -e DISPLAY=unix$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v /run/user/1000/pulse:/run/user/1000/pulse --user=root hb9fxq/sdr_tools /bin/bash
 ```

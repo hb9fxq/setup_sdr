@@ -1,3 +1,3 @@
 #!/bin/bash
-source /home/sdrtools/vars
+source /home/root/vars
 exec "$@"
