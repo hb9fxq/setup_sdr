@@ -21,6 +21,8 @@ COPY ./vars /home/${UNAME}/vars
 
 copy ./entrypoint.sh /home/${UNAME}/entrypoint.sh
 RUN sudo /home/${UNAME}/SetupGrcOnUbuntu1804.sh
+RUN pip3 install matplotlib
+RUN apt-get install p7zip p7zip-full
 RUN sudo rm -rf /home/root/.cache
 
 RUN sudo chmod +x /home/root/entrypoint.sh
